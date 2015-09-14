@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+
   root "movies#index"
-  
+
   # get "movies" => "movies#index"
 
   # get "movies/:id" => "movies#show", as: "movie"
@@ -11,5 +12,7 @@ Rails.application.routes.draw do
 
   # get "movies/new" => "movies#new"
 
-  resources :movies
+  resources :movies do
+    resources :reviews  
+  end
 end

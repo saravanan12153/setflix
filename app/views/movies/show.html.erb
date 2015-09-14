@@ -36,4 +36,7 @@
                   method: :delete, data: { confirm: 'Are you sure?' } %>
     </nav>
   </footer>
+
+  <h2> Reviews: </h2>
+  <%= link_to pluralize(@movie.reviews.size, "Review"), movie_reviews_path(@movie) %>
 </article>
