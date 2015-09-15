@@ -4,14 +4,15 @@
 
 * Rails version: 4.2
 
-* Configuration
+* List of Movies
 
-* Database creation
+* User can add movies and rate it
 
-* Database initialization
+* User can add reviews.
 
-* How to run the test suite
+* Admin access
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* Demo:
+[SetFlix](http://setflix.herokuapp.com/ "Setflix") inline link.
