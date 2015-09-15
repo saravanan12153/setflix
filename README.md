@@ -14,5 +14,5 @@
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Demo:
-[SetFlix](http://setflix.herokuapp.com/ "Setflix") inline link.
+# For Demo:
+click [SetFlix](http://setflix.herokuapp.com/ "Setflix")
