@@ -4,7 +4,7 @@ describe "A review" do
 
   it "belongs to a movie" do
     movie = Movie.create(movie_attributes)
-    review = movie.review.new(review_attributes)
+    review = movie.reviews.new(review_attributes)
 
     expect(review.movie).to eq(movie)
   end
