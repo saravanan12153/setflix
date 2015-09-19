@@ -5,18 +5,18 @@ describe "A user" do
     user = User.new(name: "")
     user.valid?
 
-    expect(user.errors[:name].any).to eq(true)
+    expect(user.errors[:name].any?).to eq(true)
   end
 
   it "requires an email" do
     user = User.new(email: "")
     user.valid?
 
-    expect(user.errors[:email].any).to eq(true)
+    expect(user.errors[:email].any?).to eq(true)
   end
 
   it "rejects improperly formatted email address" do |variable|
-    emails = %[@ user@ @example.com]
+    emails = ["@", "user@", "@example.com"]
     emails.each do |email|
       user = User.new(email: email)
       user.valid?
@@ -31,7 +31,7 @@ describe "A user" do
     user2 = User.new(email: user1.email.upcase)
     user2.valid?
 
-    expect(user2.errors[:email].first).to eq("this email has already been taken")
+    expect(user2.errors[:email].first).to eq("has already been taken")
   end
 
   it "is valid with example attributes" do
@@ -60,7 +60,7 @@ describe "A user" do
 
     user.valid?
 
-    expect(user.errors[:password_confirmation].first).to eq("Passwords do not match")
+    expect(user.errors[:password_confirmation].first).to eq("doesn't match Password")
   end
 
   it "requires a password and password_confirmation to match when creating new user" do
