@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
+  get "signin" => "sessions#new"
   resources :users
   root "movies#index"
+  resource :session
 
   # get "movies" => "movies#index"
 
