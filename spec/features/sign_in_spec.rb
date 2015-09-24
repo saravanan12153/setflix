@@ -6,7 +6,7 @@ describe "Signing in" do
 
     click_link 'Sign In'
 
-    expect(current_path).to eq(new_session_path)
+    expect(current_path).to eq(signin_path)
 
     expect(page).to have_field("Email")
     expect(page).to have_field("Password")
@@ -17,12 +17,12 @@ describe "Signing in" do
 
     visit root_url
 
-    click_link 'Sign in'
+    click_link 'Sign In'
 
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
 
-    click_button 'Sign in'
+    click_button 'Sign In'
 
     expect(current_path).to eq(user_path(user))
     expect(page).to have_text("Welcome back, #{user.name}!")
