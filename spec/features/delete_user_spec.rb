@@ -13,5 +13,7 @@ it "destroys the user and redirects to the home page" do
     visit users_path
 
     expect(page).not_to have_text(user.name)
+    expect(page).to have_link('Sign In')
+    expect(page).not_to have_link('Sign Out')
   end
 end
