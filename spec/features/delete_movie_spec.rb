@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-before do
-  admin = User.create!(user_attributes(admin: true))
-  sign_in(admin)
-end
-
 describe "Deleting a movie" do
+  before do
+    admin = User.create!(user_attributes(admin: true))
+    sign_in(admin)
+  end
+
   it "destroys the movie and shows the movie listing without the deleted movie" do
     movie = Movie.create(movie_attributes)
 

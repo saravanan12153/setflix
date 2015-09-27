@@ -4,10 +4,6 @@
 <%= render 'shared/errors', object: @review %>
   <fieldset>
     <ol>
-      <li class="required">
-        <%= f.label :name %>
-        <%= f.text_field :name, size: 40, autofocus: true %>
-      </li>
       <li class="required stars">
         <%= f.label :stars %>
         <%= f.select :stars, Review::STARS, prompt: "Pick one" %>

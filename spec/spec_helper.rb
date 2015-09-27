@@ -39,4 +39,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  # For named route to work
+  #config.include Rails.application.routes.url_helpers = true
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 end
