@@ -18,13 +18,12 @@ class Movie < ActiveRecord::Base
   has_many :characterizations, dependent: :destroy
   has_many :genres, through: :characterizations
 
-  def flop?
-    total_gross.blank? || total_gross < 50000000
-  end
 
-  def self.released
-    where("released_on <= ?", Time.now).order("released_on desc")
-  end
+  scope :released, -> { where("released_on <= ?", Time.now).order(released_on: :desc)}
+  scope :hits, -> { where('total_gross >= 300000000').order(total_gross: :desc) }
+  scope :flops, -> { where('total_gross < 50000000').order(total_gross: :asc) }
+
+  scope :rated, ->(rating) { released.where(rating: rating) }
 
   def average_stars
     reviews.average(:stars)
