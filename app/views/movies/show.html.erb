@@ -27,6 +27,14 @@
   <p>
     <%= format_total_gross(@movie) %>
   </p>
+  <h3> Genres </h3>
+  <ul>
+    <% @genres.each do |genre| %>
+      <li><%= genre.name %></li>
+    <% end %>
+  </ul>
+  <p>
+  </p>
   <% if current_user %>
     <% if @current_favorite %>
       <%= button_to 'UnFav' , movie_favorite_path(@movie, @current_favorite), method: :delete, class: "button unfave" %>
