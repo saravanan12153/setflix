@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
 	before_action :require_signin, except: [:index, :show]
 	before_action :require_admin, except: [:index, :show]
+	before_action :set_movie, only: [:show, :edit, :update, :destroy]
 	def index
 		case params[:scope]
 		when 'hits'
@@ -17,7 +18,6 @@ class MoviesController < ApplicationController
 	end
 
   def show
-    @movie = Movie.find(params[:id])
 		@fans = @movie.fans
 		@genres = @movie.genres
 		if current_user
@@ -63,7 +63,9 @@ class MoviesController < ApplicationController
     params.require(:movie).permit(:title, :description, :rating, :released_on, :total_gross, :cast, :director, :duration, :image_file_name, genre_ids: [])
   end
 
-
+	def set_movie
+		  @movie = Movie.find_by!(slug: params[:id])
+	end
 
 
 end

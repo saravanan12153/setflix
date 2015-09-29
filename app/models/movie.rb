@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  before_validation :generate_slug
   validates :title, :released_on, :duration,  presence: true
   validates :description, length: {minimum: 25}
   validates :total_gross, numericality: {greater_than_or_equal_to: 0}
@@ -27,6 +28,9 @@ class Movie < ActiveRecord::Base
   scope :upcoming, -> {  where("released_on > ?", Time.now).order(released_on: :asc) }
   scope :recent, ->(max=5) { released.limit(max) }
 
+  validates :title, presence: true, uniqueness: true
+  validates :slug, uniqueness: true
+
 
   def flop?
     total_gross.blank? || total_gross < 50000000
@@ -34,5 +38,13 @@ class Movie < ActiveRecord::Base
 
   def average_stars
     reviews.average(:stars)
+  end
+
+  def to_param
+    slug
+  end
+
+  def generate_slug
+    self.slug ||= title.parameterize if title
   end
 end
