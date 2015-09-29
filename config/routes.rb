@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # patch "movies/:id" => "movies#update"
 
   # get "movies/new" => "movies#new"
-
+  get "movies/filter/:scope" => "movies#index", as: :filtered_movies
   resources :movies do
     resources :reviews
     resources :favorites
