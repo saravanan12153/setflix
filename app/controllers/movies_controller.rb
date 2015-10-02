@@ -26,11 +26,9 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
   end
 
   def update
-    @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
     	redirect_to @movie, notice: "Movie successfully updated!"
 		else
@@ -52,7 +50,6 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
     @movie.destroy
     redirect_to movies_url, danger: "I'm sorry, Man, Your movie is gone forever!"
   end
@@ -67,5 +64,12 @@ class MoviesController < ApplicationController
 		  @movie = Movie.find_by!(slug: params[:id])
 	end
 
+	def movies_scope
+		if params[:scope].in> %(hits flops upcoming recent)
+			params[:scope]
+		else
+			:released
+		end
+	end
 
 end
