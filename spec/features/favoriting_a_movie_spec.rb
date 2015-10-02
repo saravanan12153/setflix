@@ -7,7 +7,7 @@ describe "Favoriting a movie" do
   end
 
   it "creates a favorite for the signed in user and shows the unfave button" do
-    movie = Movie!.create(movie_attributes)
+    movie = Movie.create!(movie_attributes)
 
     visit movie_url(movie)
 

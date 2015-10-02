@@ -15,7 +15,7 @@ describe FavoritesController do
     it "can not access create" do
       post :create, movie_id: @movie
 
-      expect(response).o redirect_to(new_session_url)
+      expect(response).to redirect_to(new_session_url)
     end
 
     it "can not access destroy" do

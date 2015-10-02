@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Creating a new review" do
 
   before do
-    @user = User.creat!(user_attributes)
+    @user = User.create!(user_attributes)
     sign_in(user)
   end
 

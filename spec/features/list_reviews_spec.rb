@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Viewing a list of reviews" do
 
   before do
-    @user = User.creat!(user_attributes)
+    @user = User.create!(user_attributes)
     sign_in(user)
   end
 
